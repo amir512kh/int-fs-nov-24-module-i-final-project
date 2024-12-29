@@ -1,0 +1,238 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: grid;
+    grid-template-columns: auto 1fr; /* Sidebar + Content */
+    min-height: 100vh;
+}
+
+/* Navigation Menu */
+.navbar {
+    position: relative;
+   // background-color: e2e9fd;
+   background-color: blue;
+    width: 0.5rem;
+    height: 100vh;
+    padding: 1em;
+    display: flex;
+    flex-direction: row; /* Default layout for mobile */
+    align-items: center;
+    gap: 1em;
+    left: 0;
+
+.nav__list{
+    left:0;
+
+  
+        
+        padding: 2rem;
+    }
+}
+svg{
+    color: #a2aab3;
+}
+
+/* Hamburger Menu */
+#menu-toggle {
+    display: none;
+}
+
+#hamburger {
+    font-size: 1.5em;
+    cursor: pointer;
+    display: none; /* Hide hamburger on desktop */
+}
+
+/* Navigation Links */
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1em;
+}
+
+li {
+    margin: 0;
+    
+    
+}
+
+a {
+    position: fixed;
+    left: 0;
+    text-decoration: none;
+    color: rgb(151, 6, 6);
+    padding: 0.5em;
+    display: block;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: #555;
+    }
+}
+
+/* Desktop Layout: Move Navigation to the Left */
+@media (min-width: 768px) {
+    nav {
+        flex-direction: column; /* Vertical layout for sidebar */
+        grid-column: 1 / 2; /* Fix navigation to the left side */
+        height: 100%; /* Full height */
+        padding: 1em 0; /* Adjust padding */
+        align-items: flex-start; /* Align items to the top-left */
+    }
+
+    ul {
+        flex-direction: column; /* Stack links vertically */
+        gap: 1em;
+    }
+
+    #hamburger {
+        display: none; /* Hide hamburger on larger screens */
+    }
+}
+.header-bar{
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    
+    &__week{
+        background-color: lightblue;
+        color: blue;
+        border-radius: 10px;
+        width: 60px;
+        height: 30px;
+        text-align: center;
+        
+
+    }
+    &__today{
+        background-color: lightblue;
+        color: blue;
+        border-radius: 10px;
+        width: 60px;
+        height: 30px;
+        text-align: center;
+
+    }
+
+}
+
+
+.toggle {
+    --ball-size: 60px;
+    --slot-padding: 40px;
+    --slot-height: calc(var(--ball-size) + 2 * var(--slot-padding));
+    --slot-width: calc((var(--ball-size) + 2 *var(--slot-padding)) * 2);
+    cursor: pointer;
+
+    input {
+        display: none;
+
+        &:checked+.slot {
+            background: green;
+
+            .ball {
+                
+                left: unset;
+                right: var(--slot-padding);
+            }
+        }
+    }
+
+    .slot {
+        width: var(--slot-width);
+        height: var(--slot-height);
+        background: #999;
+        border-radius: var(--slot-height);
+        position: relative;
+    }
+
+    .ball {
+        width: var(--ball-size);
+        height: var(--ball-size);
+        background-color: #ddd;
+        border-radius: var(--ball-size);
+        position: absolute;
+        top: var(--slot-padding);
+        left: var(--slot-padding);
+    }
+}
+.toggle{
+    position: absolute;
+    top: 1em;
+    margin-inline:30rem ;
+    
+}
+
+
+.calendar {
+    position: fixed;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    width: 100%;
+    max-width: 80rem; // Responsive width
+    gap: 0.5rem;
+   top: 0;
+   left: 0; 
+   padding: 2.5rem;  
+}
+
+// Header for Days
+.calendar__header {
+    grid-column: 1 / -1;
+}
+
+.calendar__days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+// Grid for Time Slots
+.calendar__grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); // 1 column for time + 7 days
+    grid-auto-rows: 3rem; // Dynamic height for rows
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0.5rem;
+}
+
+// Time Column
+.calendar__time {
+    background-color: #f4f4f4;
+    text-align: center;
+    font-weight: bold;
+}
+
+// Day Slots
+.calendar__grid li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+
+// Responsive Design
+@media (max-width: 40rem) {
+    .calendar {
+        grid-template-columns: 1fr; // Stack everything on small screens
+    }
+
+    .calendar__days {
+        grid-template-columns: repeat(3, 1fr); // Wrap days into 3 columns
+        gap: 0.5rem;
+    }
+
+    .calendar__grid {
+        grid-template-columns: 1fr 1fr; // Time + 1 day at a time
+        grid-auto-rows: 4rem; // Larger slots for smaller screens
+    }
+}

@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  margin: 0;
+  font-family: Roboto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  /* Sidebar + Content */
+  min-height: 100vh;
+}
